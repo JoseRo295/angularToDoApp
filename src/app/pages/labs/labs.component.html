@@ -1,0 +1,120 @@
+<h1>Hola</h1>
+<h2>
+  {{ welcome }}
+</h2>
+<ul>
+  @for (task of tasks(); track task) {
+  <li>
+    {{ task }}
+  </li>
+  }
+</ul>
+<p>Hola soy {{ name() }}</p>
+<p>tengo {{ age }}</p>
+<hr />
+<button (click)="clickHandler()">Click me</button>
+<p>(keydown)</p>
+<h1>Signal</h1>
+<input type="text" [value]="name()" (change)="changeHandler($event)" />
+<p>name : {{ name() }}</p>
+
+<hr />
+<ul>
+  <p>total {{ tasks().length }}</p>
+  @for (task of tasks(); track task; let i = $index) {
+  <li>{{ i }} {{ task }}</li>
+  }
+</ul>
+<hr />
+@if (1 === 1) {
+<div>my content</div>
+}
+<hr />
+@if (name() === 'nicolas') {
+<div>soy Nicolas</div>
+}
+<hr />
+@if (name() === 'nicolas') {
+<div>Soy NicOLEccc</div>
+}
+
+<input type="text" [value]="person().age" (change)="changeAge($event)" />
+@if (person().name === 'nicolas' && person().age > 18) {
+<div>soy ss Nicolas y tengo 18</div>
+} @else { no soy nicolas y no tengo 18 }
+
+<hr />
+<h1>If else new</h1>
+@if (person().name === 'nicolas' && person().age > 18) {
+<strong>Soy Nicolas y tengo mas de 18</strong>
+}@else{
+<i>No soy Nicolas y no tengo mas de 18</i>
+}
+
+<input type="text" [value]="person().name" (change)="changeName($event)" />
+<div>
+  @switch (person().name) { @case ('nicolas') {
+  <p>soy nicolas</p>
+  } @case ('juan') {
+  <p>soy juan</p>
+  } @default {
+  <p>soy otro</p>
+  } }
+</div>
+
+<hr />
+<input type="color" [formControl]="colorCtrl" />
+<p>color: {{ colorCtrl.value }}</p>
+<svg>
+  <g>
+    <rect x="0" y="0" height="100" width="100" [attr.fill]="colorCtrl.value" />
+  </g>
+</svg>
+<hr />
+<input type="number" [formControl]="widthCtrl" />
+<span class="box" [style.width.px]="widthCtrl.value"> </span>
+<hr />
+<p>
+  <input type="text" [formControl]="nameCtrl" /><br />
+  <span
+    [class.show]="nameCtrl.invalid && nameCtrl.touched"
+    class="message-error"
+  >
+    Nombre invalido
+  </span>
+</p>
+<p><input type="text" /><br /></p>
+<hr />
+<ul>
+  <p>total {{ tasks().length }}</p>
+  @for (task of tasks(); track task; let i = $index) {
+  <li>{{ i }} {{ task }}</li>
+  }
+</ul>
+<ul>
+  @for (task of tasks(); track task;let i= $index){
+  <li>{{ i }}{{ task }}</li>
+  }@empty {
+  <li><strong>La lista esta en vacio</strong></li>
+  }
+</ul>
+<hr />
+<h2>New Switch</h2>
+<div>
+  @switch (person().name) { @case ('nicolas') {
+  <p>soy nicolas</p>
+  } @case ('juan') {
+  <p>soy juan</p>
+  } @default {
+  <p>soy otro</p>
+  } }
+</div>
+<div>
+  @switch (person().name) { @case( 'nicolas'){
+  <p>Soy Nicolas</p>
+  } @case ('juan'){
+  <p>Soy juan</p>
+  } @default{
+  <p>soy otro</p>
+  } }
+</div>
